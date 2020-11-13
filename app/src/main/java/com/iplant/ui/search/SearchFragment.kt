@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.iplant.R
 import com.iplant.databinding.FragmentFavoritesBinding
 import com.iplant.databinding.FragmentSearchBinding
+import com.iplant.ui.adapters.PlantsListAdapter
 import com.iplant.utils.logD
 
 class SearchFragment : Fragment() {
@@ -30,8 +31,12 @@ class SearchFragment : Fragment() {
 
         binding.viewModel = searchViewModel
 
+        val adapter = PlantsListAdapter {}
+        binding.recyclerViewPlants.adapter = adapter
+
         searchViewModel.searchRequestSuccess.observe(viewLifecycleOwner, { searchResult ->
-            logD(searchResult.data.toString())
+            logD(searchResult.data[0].toString())
+            adapter.submitList(searchResult.data)
         })
 
         searchViewModel.searchRequestError.observe(viewLifecycleOwner, {
