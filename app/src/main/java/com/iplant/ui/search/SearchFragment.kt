@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.iplant.R
 import com.iplant.databinding.FragmentFavoritesBinding
 import com.iplant.databinding.FragmentSearchBinding
+import com.iplant.utils.logD
 
 class SearchFragment : Fragment() {
 
@@ -28,6 +29,16 @@ class SearchFragment : Fragment() {
         )
 
         binding.viewModel = searchViewModel
+
+        searchViewModel.searchRequestSuccess.observe(viewLifecycleOwner, { searchResult ->
+            logD(searchResult.data.toString())
+        })
+
+        searchViewModel.searchRequestError.observe(viewLifecycleOwner, {
+
+        })
+
+        searchViewModel.searchRequest("coco")
 
         return binding.root
     }
