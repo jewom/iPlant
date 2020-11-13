@@ -4,28 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.iplant.R
+import com.iplant.databinding.FragmentFavoritesBinding
+
 
 class FavoritesFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: FavoritesViewModel
+    private lateinit var favoritesViewModel: FavoritesViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProvider(this).get(FavoritesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_favorites, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
+
+        val binding: FragmentFavoritesBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_favorites, container, false
+        )
+
+        binding.viewModel = favoritesViewModel
+
+        return binding.root
     }
 }
