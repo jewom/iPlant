@@ -4,4 +4,6 @@
     <string name="menu_favorites">Favorites</string>
     <string name="menu_settings">Settings</string>
     <string name="search_plant">Search a plant</string>
+    <string name="activate_night_mode">Activate night mode</string>
+    <string name="clear_all_data">Clear all data</string>
 </resources>
