@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.iplant.databinding.ItemPlantBinding
-import com.iplant.models.Data
+import com.iplant.models.search.Data
 
-class PlantsListAdapter(val onPlantSelected: (plant: Data) -> Unit) : ListAdapter<Data, RecyclerView.ViewHolder>(
+class PlantsListAdapter() : ListAdapter<Data, RecyclerView.ViewHolder>(
     PlantDiffCallback()
 ) {
 
@@ -24,10 +24,6 @@ class PlantsListAdapter(val onPlantSelected: (plant: Data) -> Unit) : ListAdapte
         fun bind(plant: Data) {
 
             binding.plant = plant
-
-            itemView.setOnClickListener {
-                onPlantSelected(plant)
-            }
 
         }
 

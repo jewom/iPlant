@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="viewModel"
-            type="com.iplant.ui.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,10 +11,14 @@
         android:layout_height="match_parent"
         tools:context=".ui.search.SearchFragment">
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView_plant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:queryHint="@string/search_plant"
+            app:defaultQueryHint="@string/search_plant"
+            app:iconifiedByDefault="false"
+            android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

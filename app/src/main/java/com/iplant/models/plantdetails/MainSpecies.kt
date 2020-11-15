@@ -1,0 +1,69 @@
+package com.iplant.models.plantdetails
+
+
+import com.squareup.moshi.Json
+
+data class MainSpecies(
+    @field:Json(name = "author")
+    val author: String?,
+    @field:Json(name = "bibliography")
+    val bibliography: String?,
+    @field:Json(name = "common_name")
+    val commonName: Any?,
+    @field:Json(name = "common_names")
+    val commonNames: CommonNames?,
+    @field:Json(name = "distribution")
+    val distribution: Distribution?,
+    @field:Json(name = "distributions")
+    val distributions: Distributions?,
+    @field:Json(name = "duration")
+    val duration: Any?,
+    @field:Json(name = "edible")
+    val edible: Boolean?,
+    @field:Json(name = "edible_part")
+    val ediblePart: Any?,
+    @field:Json(name = "family")
+    val family: String?,
+    @field:Json(name = "family_common_name")
+    val familyCommonName: String?,
+    @field:Json(name = "flower")
+    val flower: Flower?,
+    @field:Json(name = "foliage")
+    val foliage: Foliage?,
+    @field:Json(name = "fruit_or_seed")
+    val fruitOrSeed: FruitOrSeed?,
+    @field:Json(name = "genus")
+    val genus: String?,
+    @field:Json(name = "genus_id")
+    val genusId: Int?,
+    @field:Json(name = "growth")
+    val growth: Growth?,
+    @field:Json(name = "id")
+    val id: Int?,
+    @field:Json(name = "image_url")
+    val imageUrl: Any?,
+    @field:Json(name = "images")
+    val images: Images?,
+    @field:Json(name = "links")
+    val links: LinksXXXX?,
+    @field:Json(name = "observations")
+    val observations: String?,
+    @field:Json(name = "rank")
+    val rank: String?,
+    @field:Json(name = "scientific_name")
+    val scientificName: String?,
+    @field:Json(name = "slug")
+    val slug: String?,
+    @field:Json(name = "sources")
+    val sources: List<Source>?,
+    @field:Json(name = "specifications")
+    val specifications: Specifications?,
+    @field:Json(name = "status")
+    val status: String?,
+    @field:Json(name = "synonyms")
+    val synonyms: List<Synonym>?,
+    @field:Json(name = "vegetable")
+    val vegetable: Boolean?,
+    @field:Json(name = "year")
+    val year: Int?
+)

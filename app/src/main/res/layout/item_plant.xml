@@ -6,16 +6,17 @@
     <data>
         <variable
             name="plant"
-            type="com.iplant.models.Data" />
+            type="com.iplant.models.search.Data" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:onClickForDetails="@{plant.slug}"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/textView_name"
+            android:id="@+id/textView_plant_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -29,6 +30,7 @@
             android:id="@+id/imageView_plant"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            imageUrl="@{plant.imageUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -40,8 +42,8 @@
             tools:text="Family"
             android:text="@{plant.family}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_plant"
-            app:layout_constraintStart_toStartOf="@+id/textView_name"
-            app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+            app:layout_constraintStart_toStartOf="@+id/textView_plant_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView_plant_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

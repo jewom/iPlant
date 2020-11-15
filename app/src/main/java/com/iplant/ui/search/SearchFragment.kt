@@ -4,19 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.iplant.R
-import com.iplant.databinding.FragmentFavoritesBinding
 import com.iplant.databinding.FragmentSearchBinding
 import com.iplant.ui.adapters.PlantsListAdapter
-import com.iplant.utils.logD
 
 class SearchFragment : Fragment() {
 
     private lateinit var searchViewModel: SearchViewModel
+    private lateinit var binding: FragmentSearchBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -25,17 +24,14 @@ class SearchFragment : Fragment() {
     ): View? {
         searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
 
-        val binding: FragmentSearchBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_search, container, false
         )
 
-        binding.viewModel = searchViewModel
-
-        val adapter = PlantsListAdapter {}
+        val adapter = PlantsListAdapter()
         binding.recyclerViewPlants.adapter = adapter
 
         searchViewModel.searchRequestSuccess.observe(viewLifecycleOwner, { searchResult ->
-            logD(searchResult.data[0].toString())
             adapter.submitList(searchResult.data)
         })
 
@@ -43,7 +39,19 @@ class SearchFragment : Fragment() {
 
         })
 
-        searchViewModel.searchRequest("coco")
+        binding.searchViewPlant.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null)
+                    searchViewModel.searchRequest(newText)
+                return false
+            }
+
+        })
 
         return binding.root
     }

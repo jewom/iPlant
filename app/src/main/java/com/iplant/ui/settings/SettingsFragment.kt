@@ -27,8 +27,6 @@ class SettingsFragment : Fragment() {
             inflater, R.layout.fragment_settings, container, false
         )
 
-        binding.viewModel = settingsViewModel
-
         return binding.root
     }
 }
