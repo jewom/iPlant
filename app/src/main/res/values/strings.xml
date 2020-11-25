@@ -7,4 +7,5 @@
     <string name="activate_night_mode">Activate night mode</string>
     <string name="clear_all_data">Clear all data</string>
     <string name="add_a_comment">Add a comment</string>
+    <string name="you_have_not_added_any_comments_on_this_plant">You have not added any comments on this plant.</string>
 </resources>
