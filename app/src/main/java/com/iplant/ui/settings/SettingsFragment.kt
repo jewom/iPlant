@@ -13,11 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.iplant.R
 import com.iplant.database.Prefs
 import com.iplant.databinding.FragmentFavoritesBinding
+import com.iplant.databinding.FragmentSearchBinding
 import com.iplant.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
 
     private lateinit var settingsViewModel: SettingsViewModel
+    private lateinit var binding: FragmentSettingsBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -26,8 +28,8 @@ class SettingsFragment : Fragment() {
     ): View? {
         settingsViewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
 
-        val binding: FragmentSettingsBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_settings, container, false
+        binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_settings, container, false
         )
 
         binding.switchNightMode.isChecked = Prefs.nightMode == AppCompatDelegate.MODE_NIGHT_YES || context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
