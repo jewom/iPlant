@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -32,6 +33,7 @@ class SearchFragment : Fragment() {
         binding.recyclerViewPlants.adapter = adapter
 
         searchViewModel.searchRequestSuccess.observe(viewLifecycleOwner, { searchResult ->
+            binding.lottiePlant.isVisible = false
             adapter.submitList(searchResult.data)
         })
 

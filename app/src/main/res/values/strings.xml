@@ -8,4 +8,8 @@
     <string name="clear_all_data">Clear all data</string>
     <string name="add_a_comment">Add a comment</string>
     <string name="you_have_not_added_any_comments_on_this_plant">You have not added any comments on this plant.</string>
+    <string name="hide_synonyms">Hide synonyms in the details page</string>
+    <string name="write_us">Write us</string>
+    <string name="are_you_sure">Are you sure ?</string>
+    <string name="do_you_want_clear">Do you want to clear all data ?</string>
 </resources>

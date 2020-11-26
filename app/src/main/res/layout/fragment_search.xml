@@ -34,6 +34,18 @@
             tools:listitem="@layout/item_plant"
             app:layout_constraintTop_toBottomOf="@+id/searchView_plant" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_plant"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerView_plants"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView_plant"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/lottie_plant" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
