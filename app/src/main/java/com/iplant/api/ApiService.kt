@@ -14,7 +14,7 @@ interface ApiService {
         @Path("id") slug: String
     ): Response<PlantResult>
 
-    @GET("plants/search")
+        @GET("plants/search")
     suspend fun getSearch(
         @Query("q") query: String
     ): Response<SearchResult>
