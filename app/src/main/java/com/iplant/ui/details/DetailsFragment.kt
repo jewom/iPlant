@@ -69,16 +69,17 @@ class DetailsFragment : Fragment() {
         return binding.root
     }
 
-    fun showCommentDialog(){
+    private fun showCommentDialog(){
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val dialogBinding = DialogCommentBinding.inflate(LayoutInflater.from(context))
         dialog.setContentView(dialogBinding.root)
-        dialogBinding.buttonSave.setOnClickListener {
-            dialog.dismiss()
-            binding.plantEntity?.let {
-                it.comment = dialogBinding.editTextComment.text.toString()
-                detailsViewModel.insertPlantEntity(it)
+        binding.plantEntity?.let { plantEntity ->
+            dialogBinding.editTextComment.setText(plantEntity.comment)
+            dialogBinding.buttonSave.setOnClickListener {
+                plantEntity.comment = dialogBinding.editTextComment.text.toString()
+                detailsViewModel.insertPlantEntity(plantEntity)
+                dialog.dismiss()
             }
         }
         dialog.window?.setLayout(

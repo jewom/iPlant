@@ -9,13 +9,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/margin_fragment_horizontal"
+        android:paddingVertical="@dimen/margin_fragment_vertical">
 
         <EditText
             android:id="@+id/editText_comment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:inputType="text"
+            android:gravity="start"
             app:layout_constraintBottom_toTopOf="@+id/button_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
