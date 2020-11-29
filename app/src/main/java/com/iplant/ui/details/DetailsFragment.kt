@@ -1,9 +1,13 @@
 package com.iplant.ui.details
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.Constraints
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.iplant.R
 import com.iplant.database.PlantEntity
+import com.iplant.databinding.DialogCommentBinding
 import com.iplant.databinding.FragmentDetailsBinding
 import com.iplant.databinding.FragmentFavoritesBinding
 import com.iplant.ui.adapters.setImageUrl
@@ -19,6 +24,7 @@ import com.iplant.utils.logD
 
 class DetailsFragment : Fragment() {
 
+    lateinit var binding: FragmentDetailsBinding
     private val detailsViewModel: DetailsViewModel by viewModels { DetailsViewModelFactory(args) }
     private val args: DetailsFragmentArgs by navArgs()
 
@@ -28,7 +34,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val binding: FragmentDetailsBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_details, container, false
         )
 
@@ -56,6 +62,30 @@ class DetailsFragment : Fragment() {
             }
         }
 
+        binding.buttonComment.setOnClickListener {
+            showCommentDialog()
+        }
+
         return binding.root
     }
+
+    fun showCommentDialog(){
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialogBinding = DialogCommentBinding.inflate(LayoutInflater.from(context))
+        dialog.setContentView(dialogBinding.root)
+        dialogBinding.buttonSave.setOnClickListener {
+            dialog.dismiss()
+            binding.plantEntity?.let {
+                it.comment = dialogBinding.editTextComment.text.toString()
+                detailsViewModel.insertPlantEntity(it)
+            }
+        }
+        dialog.window?.setLayout(
+            ConstraintLayout.LayoutParams.MATCH_PARENT,
+            Constraints.LayoutParams.MATCH_PARENT
+        )
+        dialog.show()
+    }
+
 }

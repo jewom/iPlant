@@ -12,4 +12,6 @@
     <string name="write_us">Write us</string>
     <string name="are_you_sure">Are you sure ?</string>
     <string name="do_you_want_clear">Do you want to clear all data ?</string>
+    <string name="write_your_comment_here">Write your comment here</string>
+    <string name="save">Save</string>
 </resources>
