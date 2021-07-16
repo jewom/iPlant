@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.iplant.databinding.ItemPlantBinding
 import com.iplant.models.search.Data
+import com.iplant.utils.logD
 
 class PlantsListAdapter() : ListAdapter<Data, RecyclerView.ViewHolder>(
     PlantDiffCallback()
@@ -22,9 +23,7 @@ class PlantsListAdapter() : ListAdapter<Data, RecyclerView.ViewHolder>(
     inner class CategoryViewHolder(private val binding: ItemPlantBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(plant: Data) {
-
             binding.plant = plant
-
         }
 
     }

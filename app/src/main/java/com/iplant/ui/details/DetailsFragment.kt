@@ -41,8 +41,8 @@ class DetailsFragment : Fragment() {
 
         detailsViewModel.plantRequestSuccess.observe(viewLifecycleOwner, { plantResult ->
             if (plantResult != null){
-                binding.plantData = plantResult.data
-                binding.synonyms = plantResult.data?.mainSpecies?.synonyms?.map { it.name }.toString()
+                binding.plantData = plantResult
+                binding.synonyms = plantResult?.mainSpecies?.synonyms?.map { it.name }.toString()
             }
         })
 
