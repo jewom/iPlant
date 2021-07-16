@@ -17,9 +17,9 @@ data class Data(
     @field:Json(name = "genus")
     val genus: String?,
     @field:Json(name = "genus_id")
-    val genusId: Int?,
+    val genusId: String?,
     @field:Json(name = "id")
-    val id: Int?,
+    val id: String?,
     @field:Json(name = "image_url")
     val imageUrl: String?,
     @field:Json(name = "links")

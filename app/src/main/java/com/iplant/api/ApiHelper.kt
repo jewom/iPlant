@@ -3,17 +3,21 @@ package com.iplant.api
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiHelper {
 
-    private const val BASE_URL = "https://trefle.io/api/v1/"
-    private const val API_TOKEN = "XSXuKYouEIT6QBuNypFDRIVXIiL6ZdG-M0VNx1f7vuU"
+    private const val BASE_URL = "https://api.floracodex.com/v1/"
+    private const val API_TOKEN = "N6s7Issy28ImHU6nvLMP"
+
+    private val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 
     private val okHttpClient = OkHttpClient()
         .newBuilder()
         .addInterceptor(tokenInterceptor())
+        .addInterceptor(loggingInterceptor)
         .build()
 
     val apiService: ApiService by lazy {
